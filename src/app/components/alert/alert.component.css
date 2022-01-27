@@ -1,0 +1,14 @@
+
+.tos{
+  position: absolute;
+  top: 0;
+  left:0;
+  margin-left:40%;
+  z-index: 999;
+}
+
+@media  screen and (max-width:600px) {
+  .tos{
+    margin-left: 0%;
+  }
+}

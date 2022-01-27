@@ -1,0 +1,19 @@
+.bg{
+  background-color: antiquewhite;
+}
+.content{
+  margin-top:20%;
+  height:100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.text{
+
+  font-size: 40pt;
+  font-weight: bold;
+
+
+}

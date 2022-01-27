@@ -1,0 +1,10 @@
+.tos{
+  margin-left: 40%;
+  z-index: 999;
+}
+
+@media  screen and (max-width:600px) {
+  .tos{
+    margin-left: 0%;
+  }
+}

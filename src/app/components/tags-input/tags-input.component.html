@@ -1,0 +1,15 @@
+
+  <div class="input-container">
+    <span class="tag_select" *ngFor="let item of TagArray; let i=index" (click)="onDelete(i)">{{item}}</span>
+    <input type="text" name="text" [(ngModel)]="text" (ngModelChange)="onChange()" class="input" placeholder="add tag">
+    <div class="list" >
+      <span class="text-center" *ngIf="nodata">this tags not available</span>
+         <div (click)="setData(data.name)" *ngFor="let data of Tagdata" class="tag_span">
+           {{data.name}}</div>
+
+         </div>
+
+  </div>
+
+
+
