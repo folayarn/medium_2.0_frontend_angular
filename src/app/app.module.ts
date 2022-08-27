@@ -42,6 +42,7 @@ import { TagsInputComponent } from './components/tags-input/tags-input.component
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +83,8 @@ import { TagsInputComponent } from './components/tags-input/tags-input.component
     QuillModule.forRoot(),
     StoreModule.forRoot({reducers:dataReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
