@@ -1,0 +1,15 @@
+<div  *ngFor="let d of data" [ngStyle]="{'padding':'20px'}">
+  <span>first</span>
+<div *ngFor="let i of post" >
+
+  <div *ngIf="i.ID==d.ArticleID">
+
+    <app-card-article [data]="i" ></app-card-article>
+  </div>
+
+</div>
+
+
+
+ </div>
+

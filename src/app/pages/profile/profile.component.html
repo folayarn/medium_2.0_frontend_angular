@@ -1,0 +1,78 @@
+<div class="container-fluid">
+
+    <div class="col-md-12">
+      <div class="cover-image">
+      </div>
+      <div class="image">
+        <img src="{{jsonData?.Image}}" alt="" class="img-fluid">
+      </div>
+      <div class="details">
+        <div class="flex flex-row edit-btn">
+          <button class="btn btn-primary ">Follow</button>
+          <button class="btn btn-dark ms-2" (click)="openModal()">Edit Profile</button>
+        </div>
+        <div class="bio">
+       <div><span class="text-capitalize text-dark fw-bold">{{jsonData?.Name}}</span>
+       <small class="text-muted">
+        @{{jsonData?.Username}}</small></div>
+        <span>{{jsonData?.Location}}</span>
+        <span  *ngIf="jsonData?.Languages">Speaking {{jsonData?.Languages}}</span>
+        <div class="flex flex-row">
+          <a href="mailto:{{jsonData?.Email}}" class="text-muted text-decoration-none">{{jsonData?.Email}}</a>
+          <a href="tel:{{jsonData?.Phone}}" class="text-muted text-decoration-none"  *ngIf="jsonData?.Phone">{{jsonData?.Phone}}</a>
+        </div>
+        <span  *ngIf="jsonData?.Gender">Profession: {{jsonData?.Gender}}</span>
+
+        <span *ngIf="jsonData?.Profession">Profession: {{jsonData?.Profession}}</span>
+        <span  *ngIf="jsonData?.DOB">Date of Birth: {{jsonData?.DOB}}</span>
+        <span  *ngIf="jsonData?.Profession">Profession: {{jsonData?.Profession}}</span>
+       <div>{{jsonData?.Bio}}</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+<div class="row mx-0">
+  <div class="col-md-3">
+    <div class="follow-btn">
+      <button class="btn btn-outline-primary" type="button">Followers <span class="badge bg-secondary">0</span></button>
+      <button class="btn btn-outline-primary" typer="button">Following <span class="badge bg-secondary">0</span> </button>
+    </div>
+  </div>
+
+  <div class="col-md-6 mx-4">
+    <ul ngbNav #nav="ngbNav"   [(activeId)]="active" class="nav-pills">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>My Articles</a>
+        <ng-template ngbNavContent>
+          <app-article [id]="id"></app-article>
+        </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Favorite</a>
+          <ng-template ngbNavContent>
+            <app-favorite [data]="jsonData.Favorites"></app-favorite>
+          </ng-template>
+        </li>
+        </ul>
+        <div class="content-display">
+          <div [ngbNavOutlet]="nav"></div>
+        </div>
+
+  </div>
+  <div class="col-md-3"></div>
+
+</div>
+
+  </div>
+
+
+
+
+
+
+

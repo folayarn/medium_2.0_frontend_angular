@@ -1,0 +1,6 @@
+<div class="save" (click)="unSave()" *ngIf="isSave"><i class="fas fa-bookmark"  placement="top" ngbTooltip="Saved"></i>
+
+  <span [ngStyle]="{'margin-left':'12px'}">Saved</span></div>
+<div class="save" (click)="save()" *ngIf="!isSave"><i class="far fa-bookmark"   placement="top" ngbTooltip="Save"></i>
+
+  <span [ngStyle]="{'margin-left':'12px'}">Save </span></div>

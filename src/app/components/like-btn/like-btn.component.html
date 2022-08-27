@@ -1,0 +1,6 @@
+
+  <a class="btn btn-default toggleBtn unlike" (click)="unlike()" *ngIf="isLiked" placement="top" ngbTooltip="you liked this">
+    <i class="fas fa-heart" ></i> {{countLikes}}</a>
+  <a class="btn btn-default toggleBtn like" (click)="like()"  *ngIf="!isLiked" placement="top" ngbTooltip="Like">
+    <i class="fas fa-heart"></i>{{countLikes}}</a>
+

@@ -1,0 +1,131 @@
+<div  *ngIf='types==="article"'>
+  <app-alert-success></app-alert-success>
+  <app-alert></app-alert>
+  <div class="modal-header" >
+   
+    <div [ngStyle]="{'width':'90%'}">
+      <h1 placement="bottom" ngbTooltip="{{post.Title}}" [ngStyle]="{'white-space':'nowrap','text-overflow':'ellipsis','width':'50%','overflow':'hidden','text-transform':'capitalize'}">
+        {{post?.Title}}</h1>
+      <span class="text-muted">{{post?.CreatedAt | date:"medium"}}</span>
+    </div>
+    <button
+      type="button"
+      class="exit"
+      (click)="modalRef.close()"
+    ><i class="fas fa-arrow-left"></i></button>
+  </div>
+  <div class="modal-body body">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-7 article-body" >
+        <div [innerHTML]="post?.Body"></div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="icons">
+  <div >
+    {{post?.Loves?.length}} <i class="fas fa-heart"></i>
+  </div>
+  <div>
+    {{post?.Comments?.length}} <i class="fas fa-comment"></i>
+  </div>
+  <div>
+    {{post?.Favorites?.length}} <i class="fas fa-share"></i>
+  </div>
+        </div>
+  <div class="comment-section">
+  <span *ngIf="post?.Comments?.length < 1">0 comment!!</span>
+
+  <div class=" flex flex-column" *ngIf="post?.Comments?.length >0" >
+  <div *ngFor="let i of post?.Comments" >
+
+    <div class="comment-body">
+      <div class="comment-header">
+        <div class="comment-author">
+          {{i?.Author}}
+        </div>
+        <div class="comment-date">
+          {{i?.CreatedAt | date:"medium"}}
+        </div>
+      </div>
+      <div class="comment-body-text">
+        {{i?.Body}}
+      </div>
+
+      <div class="comment-footer">
+        <div class="comment-footer-icons">
+          <div>
+            <i class="fas fa-thumbs-up"></i>
+
+          </div>
+
+          <div>
+            <i class="fas fa-share"></i>
+
+          </div>
+        </div>
+
+        </div>
+    </div>
+
+  </div>
+  </div>
+
+  </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+  <div class="modal-footer flex flex-row">
+
+
+    <textarea [(ngModel)]="comment" placeholder="comment here" class="form-control" autofocus></textarea>
+    <button type="button" class="btn btn-primary float-end" (click)="submit()">
+      {{text}}
+    </button>
+
+
+
+
+
+  </div>
+
+</div>
+
+<div *ngIf='types==="create"'>
+  <div class="modal-body body">
+    <button
+      type="button"
+      class="exit"
+      (click)="modalRef.close()"
+    ><i class="fas fa-arrow-left"></i></button>
+    <app-create-post></app-create-post>
+  </div>
+
+
+</div>
+<div *ngIf='types==="edit-user"'>
+  <div class="modal-body body">
+    <button
+      type="button"
+      class="exit"
+      (click)="modalRef.close()"
+    ><i class="fas fa-arrow-left"></i></button>
+   
+  </div>
+
+
+</div>

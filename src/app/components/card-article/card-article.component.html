@@ -1,0 +1,72 @@
+<div class="card mb-2">
+  <div class="card-header">
+
+    <div class="head">
+      <div class="author-image">
+        <div class="img">
+          <img [routerLink]="['/profile',data.Author]" [queryParams]="{token:data.UserID}" src="{{data.AuthorImage}}" alt={{data.AuthorImage}}
+          placement="bottom" ngbTooltip="view profile"
+          class="img-fluid img-cirlce rounded-circle "  width="30px" height="30px"/>
+        </div>
+
+            <div class="details">
+              <div [ngStyle]="{'text-transform':'capitalize','overflow':'hidden','margin':'0px !important'}"> {{data.Author}}
+                 <small class="text-muted">@{{data.Basename}}</small></div>
+              <small class="text-muted" [ngStyle]="{'margin-top':'-20px !important'}">{{time}}</small>
+            </div>
+      </div>
+      <div ngbDropdown placement="bottom" autoClose="outside">
+        <i class="fas fa-ellipsis-v "  ngbDropdownToggle id="dropdown1"></i>
+
+        <div ngbDropdownMenu aria-labelledby="dropdown1">
+          <!-- items as buttons -->
+          <button ngbDropdownItem >
+            <app-save-btn [post]="data" [userID]="user.ID"></app-save-btn>
+          </button>
+          <button ngbDropdownItem *ngIf="data.UserID == user.ID" ><div class="del">
+            <i class="fas fa-trash-alt" ></i>
+
+    <span [ngStyle]="{'margin-left':'12px'}">Delete</span>
+  </div>
+  </button>
+          <button ngbDropdownItem><div class="del">
+            <i class="fas fa-flag" ></i>
+
+    <span [ngStyle]="{'margin-left':'12px'}">Report</span>
+  </div></button>
+
+
+        </div>
+      </div>
+
+  </div>
+  </div>
+
+  <div class="card-body">
+    <h1 [ngStyle]="{'width':'50%','text-overflow':'ellipsis','overflow':'hidden','white-space':'nowrap'}">{{data.Title}}</h1>
+    <div class="card-text text">{{data.Description}}</div>
+    <button class="btn btn-primary" (click)="openModal(data.ID)" [ngStyle]="{'margin':'10px'}">Read it</button>
+    <img src='{{data.Image}}' class="img-fluid card-img" alt='{{data.Title}}' />
+
+   <div class="buttons-status">
+    <div>
+
+    </div>
+
+    <div>
+      <span>{{data.Comments.length}}</span>
+      <i class="fas fa-comment"></i>
+    </div>
+   </div>
+  </div>
+  <div class="card-footer">
+    <div class="button-con">
+     <app-like-btn [post]="data" [userID]="user.ID"></app-like-btn>
+      <a class="btn btn-default toggleBtn ms-3" (click)="openModal(data.ID)" placement="top" ngbTooltip="click to comment"><i class="fas fa-comment"></i></a>
+    </div>
+
+
+    </div>
+
+
+</div>

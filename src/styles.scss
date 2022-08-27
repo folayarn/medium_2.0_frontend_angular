@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+  @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+
+//  @import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
+
+/* @import '~quill/dist/quill.core.css';
+ @import '~quill/dist/quill.bubble.css';
+ @import '~quill/dist/quill.snow.css'; */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.btn{
+  border:0px !important;
+  outline: none !important;
+}
+
+ .cdk-overlay-container, .cdk-global-overlay-wrapper{
+  background: rgba(0,0,0,0.1);
+ }
+ 
