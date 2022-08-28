@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/state.reducer';
+import { setSuccess, setText } from '../../store/state.actions'
+
 
 @Component({
   selector: 'app-alert-success',
@@ -23,4 +25,8 @@ export class AlertSuccessComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hide(){
+    this.store.dispatch(setSuccess({ success: false }));
+    this.store.dispatch(setText({ text: '' }));
+  }
 }

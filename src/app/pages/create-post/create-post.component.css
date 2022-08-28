@@ -1,0 +1,58 @@
+.overlay{
+  position:fixed;
+  top: 0;
+  margin-left:-50px;
+  width: 100vw;
+  height:100vh;
+  z-index: 999;
+  background-color:rgba(0,0,0,0.2);
+}
+
+.carda{
+  position:absolute;
+  top: 50%;
+ 
+  left: 40%;
+  height:fit-content;
+  width:fit-content;
+  border-radius: 10px;
+background-color: white;
+  text-align: center;
+  padding:20px;
+
+}
+
+.jumbotron{
+
+  padding:40px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .jumbotron{
+
+    padding:10px;
+  }
+
+}
+
+.preview{
+  border-radius: 5px;
+  width: 200px;
+  height:200px;
+  margin: 10%;
+}
+.preview img{
+  width: 200px;
+  border-radius: 5px;
+  height:200px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.preview i{
+  cursor: pointer;
+  font-size: 150pt;
+  color: rgb(230, 225, 235);
+}

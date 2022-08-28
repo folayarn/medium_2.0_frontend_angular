@@ -1,0 +1,103 @@
+.search-results-container{
+  width:100%;
+  padding: 10% 2%;
+  height: 88vh;
+border-right: 1px solid rgb(223, 222, 222);
+border-left: 1px solid rgb(223, 222, 222);
+  overflow: auto;
+}
+.no-data{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #999;
+  padding: 2rem;
+}
+.no-data span{
+  font-size: 1.0rem;
+  color: rgb(172, 171, 171);
+  padding: 2rem;
+}
+.no-data button{
+  width: fit-content;
+}
+/* width */
+.search-results-container::-webkit-scrollbar {
+  width: 10px;
+
+}
+
+/* Track */
+.search-results-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 20px;
+
+}
+
+/* Handle */
+.search-results-container::-webkit-scrollbar-thumb {
+  background: rgb(225, 220, 220);
+  border-radius: 20px;
+
+}
+
+/* Handle on hover */
+.search-results-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(219, 235, 248);
+}
+
+@media screen and (max-width:752px) {
+
+.search-results-container::-webkit-scrollbar {
+  width: 0px;
+
+}
+.search-results-container{
+
+border-right: 0px ;
+border-left: 0px ;
+}
+}
+.spin{
+  position: relative;
+  z-index:999;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+}
+
+.loader{
+  position: absolute;
+  z-index: 999;
+  bottom: 3%;
+  left:45%;
+
+}
+.floating a i {
+  font-size:20pt;
+}
+.floating{
+  padding:15px;
+  font-size: 20pt;
+  position: absolute;
+  z-index: 999;
+  bottom: 7%;
+  left:60%;
+}
+
+.btn-group-o{
+  padding:3px;
+}
+.btn-group-o button{
+  padding:10px;
+  color:rgb(121, 126, 124)
+}
+
+.btn-group-o button:focus{
+  padding:10px;
+  background-color: white;
+}

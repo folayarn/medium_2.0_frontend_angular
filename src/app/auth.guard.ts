@@ -3,12 +3,13 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import {setError, setLoading, setText} from './store/state.actions'
 import { Store } from '@ngrx/store';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router:Router){
+  constructor(private router:Router,private helper:JwtHelperService,){
 
   }
   canActivate(
@@ -19,10 +20,15 @@ export class AuthGuard implements CanActivate {
     return this.checkToken();
   }
 
+ 
   checkToken(){
-    if(sessionStorage.getItem('tk')){
+    let tokenEpired :boolean= this.helper.isTokenExpired(<string>sessionStorage.getItem('tk'));
+    if(!tokenEpired){
+    
      return true
     }else{
+      sessionStorage.clear();
+      localStorage.clear();
 this.router.navigate(['/login'])
       return false
 

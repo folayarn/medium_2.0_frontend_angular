@@ -1,6 +1,6 @@
 <ngb-toast *ngIf="error" [autohide]="true" (hidden)="error=false"
   ngClass="bg-danger text-light tos"
- [autohide]="true"
+  (hidden)="hide()"
  [delay]="5000"
  >
  {{text}}

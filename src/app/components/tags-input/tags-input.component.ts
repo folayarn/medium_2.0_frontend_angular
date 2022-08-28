@@ -12,6 +12,7 @@ export class TagsInputComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   @Output() arraytoreceived:EventEmitter<any>=new EventEmitter<any>();
+ 
   token:any =sessionStorage.getItem('tk')
    id:any =sessionStorage.getItem('tfd')
     httpOptions = {
@@ -29,24 +30,20 @@ text="";
 nodata=false
   Tagdata:any
   onChange(){
-    console.log(this.text.length)
     const  url=`http://localhost:8000/api/v1/tags/search?q=${this.text}`;
     if(this.text.length >0){
     return this.http.get(url,this.httpOptions).subscribe((data:any)=>{
       this.Tagdata= data
       if(this.Tagdata.length <1){
         this.nodata=true
+
       }else{
         this.nodata=false
+
       }
     });
 
   }else{
-    if(this.Tagdata.length <1){
-      this.nodata=true
-    }else{
-      this.nodata=false
-    }
 
    return this.Tagdata=[]
 

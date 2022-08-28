@@ -1,7 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
+
     "analytics": "e33206f7-58c5-4c94-a784-84604baeea9c"
+
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -31,12 +33,13 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss",
               "./node_modules/quill-emoji/dist/quill-emoji.css",
               "./node_modules/quill/dist/quill.core.css",
               "./node_modules/quill/dist/quill.bubble.css",
-              "./node_modules/quill/dist/quill.snow.css"
+            "./node_modules/quill/dist/quill.snow.css",
+            "./node_modules/ngx-spinner/animations/ball-scale-multiple.css" 
+
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",

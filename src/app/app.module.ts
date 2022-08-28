@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
 import { SectionComponent } from './components/section/section.component';
 import { CardComponent } from './components/card/card.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpService } from './services/http.service';
 import { TextFieldComponent } from './components/text-field/text-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,13 +38,29 @@ import { DeniedPageComponent } from './pages/denied-page/denied-page.component';
 import { TagsPageComponent } from './pages/admin/tags-page/tags-page.component';
 import { AlertSuccessComponent } from './components/alert-success/alert-success.component';
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
-
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { CardArticleComponent } from './components/card-article/card-article.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { JwtModule } from "@auth0/angular-jwt";
+import { AuthService } from './services/auth.service';
+import { LikeBtnComponent } from './components/like-btn/like-btn.component';
+import { SaveBtnComponent } from './components/save-btn/save-btn.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { RouterModule } from '@angular/router';
+import { ArticleComponent } from './pages/user/article/article.component';
+import { FavoriteComponent } from './pages/user/favorite/favorite.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './effects/auth.effects';
+//import { UserEffects } from './effects/user.effects';
 
 
 
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HeaderComponent,
     ButtonComponent,
@@ -69,7 +85,16 @@ import { TagsInputComponent } from './components/tags-input/tags-input.component
     DeniedPageComponent,
     TagsPageComponent,
     AlertSuccessComponent,
-    TagsInputComponent
+    TagsInputComponent,
+    CardArticleComponent,
+    ModalComponent,
+    LikeBtnComponent,
+    SaveBtnComponent,
+    ProfileComponent,
+    ArticleComponent,
+    FavoriteComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -84,9 +109,17 @@ import { TagsInputComponent } from './components/tags-input/tags-input.component
     StoreModule.forRoot({reducers:dataReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     BrowserAnimationsModule,
-    
+    MdbCollapseModule,
+    InfiniteScrollModule,
+    MdbModalModule,
+    JwtModule.forRoot({config: {
+      tokenGetter: () => {
+        return sessionStorage.getItem("tk");
+      },
+    },}),
+    EffectsModule.forRoot([AuthEffects])
   ],
-  providers: [HttpService],
+  providers: [AuthService,{provide:HTTP_INTERCEPTORS,useClass:HttpService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

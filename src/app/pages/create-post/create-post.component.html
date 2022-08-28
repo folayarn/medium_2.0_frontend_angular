@@ -1,51 +1,73 @@
-<div class="container-fluid h-100 ">
 
+<div class="container-fluid jumbotron">
 <div class="row">
-  <div class="col-md-12 mt-3 jumbotron ">
-
+  <div class="col-md-12">
+    <app-alert></app-alert>
+    <app-alert-success></app-alert-success>
 
 <form [formGroup]="form">
-<div class="form-group  clearfix">
-<button type="submit" class="btn btn-danger btn-lg float-right" (click)="onPublish()">{{text}}</button>
-</div>
-<div class="form-group col-md-12 ">
-  <label class="control-label" for="title">Title</label>
-  <input  formControlName="title" type="text" Id="title" class=" form-control form-control-lg" />
+
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-8">
+
+          <div class="mb-3">
+            <quill-editor
+             formControlName="body"
+
+             [modules]="config"
+             [styles]="{'height':'60vh','overflow':'auto','background-color':'white','font-size':'10pt'}">
+
+          </quill-editor>
+          <textarea maxlength="300" rows="3" cols="30"
+          formControlName="description"
+          required
+           placeholder="Enter short description for the Post" class=" form-control"></textarea>
+          </div>
+    </div>
+    <div class="col-md-4">
+
+      <div class="row">
+        <div class="mb-1 col-md-12 ">
+          <label class="form-label" for="title">Title</label>
+          <input  formControlName="title" type="text" Id="title" required class=" form-control form-control-lg" />
+          </div>
+
+          <div class="mb-3 col-md-12 ">
+            <label class="form-label" for="title" [ngStyle]="{'visibility': 'hidden'}">Title</label>
+            <app-tags-input (arraytoreceived)="getTags($event)"></app-tags-input>
+          </div>
+          <div class="mb-3 col-md-12 ">
+            <div>
+              <input  [ngStyle]="{'display':'none'}" required type="file"
+              (change)="onFileChange($event)" #upload>
+              
+           
+              <div class="img-fluid preview" (click)="upload.click()" >
+                <i *ngIf="!imgFile" class="fas fa-image" placement="top" ngbTooltip="Upload Cover Image"></i>
+                <img [src]="imgFile" *ngIf="imgFile">
+              </div>
+            
+            </div>
+          
+            
+            
+          
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-danger float-end" (click)="onPublish()">{{text}}</button>
+            </div>
+      </div>
+    </div>
 
   </div>
 
-
-
-    <div class="form-group">
-      <quill-editor
-       format="text"
-       formControlName="editor"
-       [modules]="modules"
-      theme="snow" [styles]="{'height':'60vh','overflow':'auto','background-color':'white'}">
-
-    </quill-editor>
-    <textarea maxlength="300" rows="3" cols="30"
-    formControlName="description"
-     placeholder="Enter short description for the Post" class=" form-control"></textarea>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-9 ">
-        <label class="control-label" for="title" [ngStyle]="{'visibility': 'hidden'}">Title</label>
-        <app-tags-input (arraytoreceived)="getTags($event)"></app-tags-input>
-
-        </div>
-
-        <div class="form-group col-md-3 ">
-          <input  [ngStyle]="{'display':'none'}" type="file"
-          (change)="onFileChange($event)" #upload>
-          <br/>
-        <button class="btn btn-primary btn-lg" (click)="upload.click()">
-          Upload Cover Image</button>
-
-        </div>
-    </div>
-
+</div>
 </form>
+<div class="overlay" *ngIf="loading">
+  <div class="carda">
+   <img src="../assets/images/book.gif" alt="loading">
 </div>
   </div>
 </div>
+

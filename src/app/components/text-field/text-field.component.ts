@@ -21,7 +21,7 @@ userId:new FormControl('1')
   })
 
 onSubmit(): void {
-this.HttpService.Post(this.form.value).subscribe(response => {
+this.HttpService.createPost(this.form.value).subscribe(response => {
 console.log(response)
 })
 

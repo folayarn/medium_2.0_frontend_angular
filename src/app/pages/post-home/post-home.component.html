@@ -1,1 +1,57 @@
-<p>post-home works!</p>
+<div class="container-fluid">
+  <app-alert></app-alert>
+    <app-alert-success></app-alert-success>
+
+  <div ngbDropdown placement="top" class="floating">
+    <a class="btn btn-primary btn-floating" id="dropdownBasic2"  placement="top" ngbTooltip="click" ngbDropdownToggle>
+      <i class="fas fa-th-large"></i>
+    </a>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="btn-group-o">
+      <button ngbDropdownItem (click)="openModal()" ><i class="fas fa-edit"></i> Create Article</button>
+      <button ngbDropdownItem><i class="fas fa-folder-open"></i> My Favorites</button>
+    </div>
+  </div>
+
+
+  <div class="row mt-2">
+<div class="col-md-3">
+
+</div>
+
+<div class="col-md-6">
+
+
+
+  <div class="search-results-container"
+    infinite-scroll
+    [scrollWindow]="false"
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="1000"
+    (scrolled)="onScroll($event)"
+    >
+<div  class="no-data" *ngIf="data?.length < 1">
+  <span>No Data available</span>
+
+  <button class="btn btn-primary" (click)="reload()">reload</button>
+</div>
+
+      <div  *ngFor="let i of data">
+       <app-card-article [data]="i"></app-card-article>
+      </div>
+      <div class="spinner-border text-primary loader" role="status" *ngIf="spinner">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+</div>
+
+
+
+
+
+</div>
+<div class="col-md-3">
+
+</div>
+
+  </div>
+
+</div>

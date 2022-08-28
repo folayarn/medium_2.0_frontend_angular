@@ -20,11 +20,12 @@ export class TagsPageComponent implements OnInit {
   })
 
   submit() {
+   
  this.http.addTags(this.form.value).subscribe(res=>{
    this.form.reset()
    this.store.dispatch(setSuccess({success:true}))
    this.store.dispatch(setText({text:"Successfully added"}))
-   console.log(res)
+
    setTimeout(()=>{
     this.store.dispatch(setSuccess({success:false}))
   },3000)

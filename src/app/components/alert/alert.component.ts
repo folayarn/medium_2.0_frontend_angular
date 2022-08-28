@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/state.reducer';
+import { setError, setText } from '../../store/state.actions'
+
 
 @Component({
   selector: 'app-alert',
@@ -23,6 +25,10 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hide(){
+    this.store.dispatch(setError({ error: false }));
+    this.store.dispatch(setText({ text: '' }));
+  }
 
 }
 

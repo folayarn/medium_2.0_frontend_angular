@@ -15,16 +15,18 @@ import { RoleGuard } from './role.guard';
 import { DeniedPageComponent } from './pages/denied-page/denied-page.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { TagsPageComponent } from './pages/admin/tags-page/tags-page.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {path:'', component:HomepageComponent},
+  {path:'hello',component:ProfileComponent},
   {path:'login', component:LoginComponent,canActivate:[PrivateAuthGuard]},
   {path:'register',component:RegisterComponent,canActivate:[PrivateAuthGuard]},
-
+  {path:'profile/:name?token=user_id',component:ProfileComponent,canActivate:[AuthGuard,UserRoleGuard]},
   {path:'home',component:HomeComponent,canActivate:[AuthGuard,UserRoleGuard],
   children: [
     {path:'',component:PostHomeComponent},
-    {path:'create',component:CreatePostComponent}
+  
   ]
 },
 {path:'denied',component:DeniedPageComponent,canActivate:[AuthGuard]},
@@ -32,15 +34,9 @@ const routes: Routes = [
 children:[
 {path:'',component:AdminDashboardComponent},
 {path:'tags',component:TagsPageComponent}
-
-
 ]
-
-
-
 },
-
-  {path:'**',component:PageNotFoundComponent}
+{path:'**',component:PageNotFoundComponent}
 
 ];
 

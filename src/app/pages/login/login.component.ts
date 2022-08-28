@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpService } from './../../services/http.service';
-import {setError, setLoading, setText} from '../../store/state.actions'
+import { AuthService } from './../../services/auth.service';
+import { setError, setLoading, setText} from '../../store/state.actions'
 
 import { setStorage } from 'src/app/utility';
 import { Store } from '@ngrx/store';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   returnData:any;
 
-  constructor(private http:HttpService,
+  constructor(private http:AuthService,
   private router:Router,
   private store:Store){
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   form=new FormGroup({
-    email:new FormControl(''),
+    username:new FormControl(''),
     password:new FormControl('')
    })
 
@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
 
 
   submit(){
+
+   
  this.store.dispatch(setLoading({loading:true}))
     this.http.login(this.form.value).subscribe(res=>{
       if(res.role==='admin'){
@@ -50,6 +52,7 @@ export class LoginComponent implements OnInit {
         this.store.dispatch(setLoading({loading:false}))
       }
           },err=>{
+            console.log(err)
             this.store.dispatch(setError({error:true}))
             this.store.dispatch(setText({text:'Invalid Request'}))
         this.store.dispatch(setLoading({loading:false}))

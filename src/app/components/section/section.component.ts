@@ -12,10 +12,10 @@ export class SectionComponent implements OnInit {
   data:any;
   constructor(private HttpService:HttpService){}
   ngOnInit():void{
-this.HttpService.getPost().subscribe((res)=>{
+// this.HttpService.getPost().subscribe((res)=>{
 
-this.data=res
-})
+// this.data=res
+// })
   }
 
 }

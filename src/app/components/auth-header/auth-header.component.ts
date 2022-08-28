@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService } from 'src/app/services/http.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Store } from '@ngrx/store';
 import { setLoading } from 'src/app/store/state.actions';
 import { isAdmin } from 'src/app/utility';
@@ -12,7 +12,7 @@ import { isAdmin } from 'src/app/utility';
 })
 export class AuthHeaderComponent implements OnInit {
 
-  constructor(private http:HttpService,private router:Router,private store:Store) { }
+  constructor(private http:AuthService,private router:Router,private store:Store) { }
 
   ngOnInit(): void {
   }
